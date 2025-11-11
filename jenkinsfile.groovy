@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         // Docker Hub image names
-        FRONTEND_IMAGE = "dulanjaf/devops-frontend"
-        BACKEND_IMAGE  = "dulanjaf/devops-backend"
+        FRONTEND_IMAGE = "dulanjaf/frontend"
+        BACKEND_IMAGE  = "dulanjaf/backend"
 
         // Git repository
         GIT_REPO = "https://github.com/dulanjaf/devops.git"
