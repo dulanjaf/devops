@@ -2,8 +2,11 @@ pipeline {
     agent any
 
     environment {
-        FRONTEND_IMAGE = "dulanjaf/frontend-app"
-        BACKEND_IMAGE = "dulanjaf/backend-app"
+        // Docker Hub image names
+        FRONTEND_IMAGE = "dulanjaf/devops-frontend"
+        BACKEND_IMAGE  = "dulanjaf/devops-backend"
+
+        // Git repository
         GIT_REPO = "https://github.com/dulanjaf/devops.git"
     }
 
@@ -30,21 +33,14 @@ pipeline {
             }
         }
 
-        stage('Login to Docker Hub') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    sh '''
-                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                    '''
-                }
-            }
-        }
-
-        stage('Push Docker Image') {
+        stage('Push Docker Images to Docker Hub') {
             steps {
                 script {
-                    sh "docker push ${FRONTEND_IMAGE}:latest"
-                    sh "docker push ${BACKEND_IMAGE}:latest"
+                    // Uses Jenkins credentials with ID 'dockerhub'
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+                        sh "docker push ${FRONTEND_IMAGE}:latest"
+                        sh "docker push ${BACKEND_IMAGE}:latest"
+                    }
                 }
             }
         }
@@ -52,7 +48,7 @@ pipeline {
 
     post {
         always {
-            sh "docker logout"
+            echo 'Pipeline completed — cleaning up workspace.'
         }
     }
 }
