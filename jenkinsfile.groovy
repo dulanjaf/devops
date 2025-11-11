@@ -37,9 +37,13 @@ pipeline {
             steps {
                 script {
                     // Uses Jenkins credentials with ID 'dockerhub'
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
-                        sh "docker push ${FRONTEND_IMAGE}:latest"
-                        sh "docker push ${BACKEND_IMAGE}:latest"
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                        sh '''
+                            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                            docker push ${FRONTEND_IMAGE}:latest
+                            docker push ${BACKEND_IMAGE}:latest
+                            docker logout
+                        '''
                     }
                 }
             }
