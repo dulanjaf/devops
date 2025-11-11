@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        FRONTEND_IMAGE = "devops/frontend-app"
-        BACKEND_IMAGE = "devops/backend-app"
+        FRONTEND_IMAGE = "dulanjaf/frontend-app"
+        BACKEND_IMAGE = "dulanjaf/backend-app"
         GIT_REPO = "https://github.com/dulanjaf/devops.git"
     }
 
