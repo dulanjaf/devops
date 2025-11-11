@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        FRONTEND_IMAGE = "kvcn/frontend-app"
-        BACKEND_IMAGE = "kvcn/backend-app"
-        GIT_REPO = "https://github.com/nilumindakvc/ASPCIdentity.git"
+        FRONTEND_IMAGE = "devops/frontend-app"
+        BACKEND_IMAGE = "devops/backend-app"
+        GIT_REPO = "https://github.com/dulanjaf/devops.git"
     }
 
     stages {
@@ -14,10 +14,10 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Build Frontend Docker Image') {
             steps {
                 script {
-                    sh "docker build -t ${FRONTEND_IMAGE}:latest -f frontend/userlogin/Dockerfile frontend/userlogin"
+                    sh "docker build -t ${FRONTEND_IMAGE}:latest -f frontend/Dockerfile frontend"
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
         stage('Build Backend Docker Image') {
             steps {
                 script {
-                    sh "docker build -t ${BACKEND_IMAGE}:latest -f Identity/Dockerfile Identity"
+                    sh "docker build -t ${BACKEND_IMAGE}:latest -f backend/Dockerfile backend"
                 }
             }
         }
