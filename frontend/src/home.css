@@ -1,0 +1,335 @@
+/* Home Page Styling */
+.home-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.home-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 50px;
+    animation: slideDown 0.8s ease-out;
+}
+
+.home-header h1 {
+    font-size: 3em;
+    margin: 0;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.home-header .subtitle {
+    font-size: 1.2em;
+    margin-top: 10px;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+.home-content {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.welcome-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    animation: slideInUp 0.8s ease-out;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.username {
+    font-weight: 700;
+    color: #ffd700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.card-header .status {
+    margin: 10px 0 0 0;
+    font-size: 1em;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+.card-body {
+    padding: 40px;
+    background: #f8f9fa;
+}
+
+.info-section,
+.quick-actions {
+    margin-bottom: 30px;
+}
+
+.info-section h3,
+.quick-actions h3 {
+    color: #333;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li {
+    padding: 12px 0;
+    color: #555;
+    font-size: 1.05em;
+    border-bottom: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.feature-list li:last-child {
+    border-bottom: none;
+}
+
+.feature-list li:hover {
+    color: #667eea;
+    padding-left: 10px;
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.quick-actions h3 {
+    grid-column: 1 / -1;
+    margin-bottom: 15px;
+}
+
+.action-btn {
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.action-btn:active {
+    transform: translateY(-1px);
+}
+
+.card-footer {
+    padding: 30px 40px;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn-logout {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 50px;
+    border-radius: 10px;
+    font-size: 1.05em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    min-width: 200px;
+}
+
+.btn-logout:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+}
+
+.btn-logout:active:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.btn-logout:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.alert {
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    animation: slideDown 0.5s ease-out;
+    text-align: center;
+    font-weight: 500;
+}
+
+.alert-error {
+    background-color: #fee;
+    color: #c33;
+    border: 1px solid #fcc;
+}
+
+.alert-success {
+    background-color: #efe;
+    color: #3c3;
+    border: 1px solid #cfc;
+}
+
+/* Animations */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .home-header h1 {
+        font-size: 2.2em;
+    }
+
+    .card-header {
+        padding: 30px;
+    }
+
+    .card-header h2 {
+        font-size: 1.6em;
+    }
+
+    .card-body {
+        padding: 30px;
+    }
+
+    .card-footer {
+        padding: 20px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        padding: 20px;
+    }
+
+    .home-header {
+        margin-bottom: 30px;
+    }
+
+    .home-header h1 {
+        font-size: 1.8em;
+    }
+
+    .home-header .subtitle {
+        font-size: 1em;
+    }
+
+    .card-header {
+        padding: 25px;
+    }
+
+    .card-header h2 {
+        font-size: 1.3em;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-footer {
+        padding: 15px 20px;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-logout {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-container {
+        padding: 15px;
+    }
+
+    .home-header h1 {
+        font-size: 1.5em;
+    }
+
+    .home-header .subtitle {
+        font-size: 0.9em;
+    }
+
+    .card-header {
+        padding: 20px;
+    }
+
+    .card-header h2 {
+        font-size: 1.1em;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .feature-list li {
+        font-size: 0.95em;
+        padding: 10px 0;
+    }
+
+    .action-btn {
+        padding: 12px 15px;
+        font-size: 0.85em;
+    }
+
+    .btn-logout {
+        padding: 12px 20px;
+        font-size: 0.95em;
+    }
+}
